@@ -16,21 +16,32 @@
         "button": {
             "prototype": "digit/ui/button.reel",
             "properties": {
+                "element": {"#": "button"},
                 "enabled": true,
-                "label": "Button"
+                "label": "new task"
+            },
+            "listeners": [
+                {
+                    "type": "action ",
+                    "useCapture": false,
+                    "listener": {"@": "rangeController"}
+                }
+            ]
+        },
+        "list": {
+            "prototype": "digit/ui/list.reel",
+            "properties": {
+                "contentController": "<!DOCTYPE html> <html> <head>     <title></title>     <script type=\"text/montage-serialization\">     {         \"rangeController\": {             \"prototype\": \"montage/core/range-controller\"         }     }     </script> </head> <body> </body> </html>"
             }
         },
-        "select": {
-            "prototype": "digit/ui/select.reel",
-            "properties": {
-                "element": {"#": "select"}
-            }
+        "rangeController": {
+            "prototype": "montage/core/range-controller"
         },
-        "text": {
-            "prototype": "montage/ui/text.reel",
+        "title": {
+            "prototype": "digit/ui/title.reel",
             "properties": {
-                "element": {"#": "text"},
-                "value": "Text"
+                "element": {"#": "title"},
+                "value": "things to do"
             }
         }
     }
@@ -38,14 +49,11 @@
 </head>
 <body>
     <div data-montage-id="main" data-montage-skin="light" class="Main">
-        <p data-montage-id="text">
-            <button data-montage-id="button"></button>
-            <select data-montage-id="select">
-                <option value="">
-                    Select
-                </option>
-            </select>
-        </p>
+        <h1 data-montage-id="title"></h1>
+        <button data-montage-id="button"></button>
+        <ul data-montage-id="list">
+            <li></li>
+        </ul>
     </div>
 </body>
 </html>
